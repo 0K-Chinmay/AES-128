@@ -339,7 +339,7 @@ always @(posedge clkr) begin
         i <= 0;
         done1 <= 0;
         out16 <= 0;
-    end else if (last && t1 == 16'hbfc0) begin
+    end else if (last) begin
         case(i) 
         1:out16 <= t1;
         2:out16 <= t2;
