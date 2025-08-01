@@ -47,42 +47,9 @@ always@(posedge clk) begin
 
 end
 
-reg [127:0] randm,randn,rando;
-
-initial begin
-    randm = 127'h123135123fab;
-    randn = 127'h943604602347;
-    rando = 127'h460925025306;
-end
-
-wire [127:0] shift_data_out_0 = randm;
-wire [127:0] shift_data_out_1 = shift_data_out ^ randm;
-
-wire [127:0] mix_data_out_0 = randn;
-wire [127:0] mix_data_out_1 = mix_data_out ^ randn;
-
-wire [127:0] key_in_0 = rando;
-wire [127:0] key_in_1 = key_in ^ rando;
-
-wire [127:0] y;
-
-wire [127:0] fin = finish ? 128'hffffffffffffffffffffffffffffffff : 128'h00000000000000000000000000000000;
-wire [127:0] last1 = ~last ? 128'hffffffffffffffffffffffffffffffff : 128'h00000000000000000000000000000000;
-
-mask_2 m2(
-   shift_data_out_0,
-   shift_data_out_1,
-   mix_data_out_0,
-   mix_data_out_1,
-   key_in_0,
-   key_in_1,
-   last,
-   fin,
-   y
-);
 always@(posedge clk ) begin
     if(rst != 0) data_out <= 0;
     else 
-        data_out <= y;
+        data_out <= last ? shift_data ^ key_in :  mix_data^key_in;
 end
 endmodule
