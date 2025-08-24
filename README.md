@@ -1,0 +1,1 @@
+The following design uses only Bram loading of data there is another AES model which is uploaded as AES-128 PYNQ which runs AES128 at 175Mhz on pynq board with a utilisation of only 2.5k LUTS with AXI and takes only about 43 Clock cycles making its speed around 457Mbps.
