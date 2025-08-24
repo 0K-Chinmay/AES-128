@@ -37,31 +37,4 @@ The optimized **AES-128 PYNQ** model achieves **high throughput** while maintain
 
 ---
 
-## Getting Started
 
-### Requirements
-- PYNQ Board (Zynq-based, e.g., PYNQ-Z1 / Z2)  
-- Vivado + Vitis / SDSoC toolchain  
-- PYNQ Python runtime  
-
-### Build & Deployment
-1. Clone the repository.  
-2. Open the project in **Vivado**.  
-3. Generate bitstream and export hardware.  
-4. Deploy to PYNQ board.  
-5. Run Python scripts to send/receive data via AXI DMA.  
-
----
-
-## Performance Insights
-- The **BRAM version** is straightforward but limited in speed.  
-- The **AXI version** achieves **10x lower cycle count** with **lower LUTs**, making it highly suitable for practical applications requiring high throughput AES encryption.  
-
----
-
-## Applications
-- Secure communication on FPGA-based systems  
-- High-throughput data encryption for IoT and embedded devices  
-- Real-time cryptographic accelerators  
-
----
